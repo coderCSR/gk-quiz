@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Daily GK Quiz - ताज़ा सामान्य ज्ञान प्रश्नोत्तरी। Current Affairs, Science, History, Geography के सवाल। रोज़ नए सवाल, रोज़ नया ज्ञान।">
-<meta name="keywords" content="GK Quiz, General Knowledge, Current Affairs 2025, सामान्य ज्ञान, Daily Quiz, India GK">
+<meta name="keywords" content="GK Quiz, General Knowledge, Current Affairs 2026, सामान्य ज्ञान, Daily Quiz, India GK">
 <meta property="og:title" content="Daily GK Quiz - रोज़ नया ज्ञान">
 <meta property="og:description" content="ताज़ा सामान्य ज्ञान प्रश्नोत्तरी - Current Affairs, Science, History">
 <meta property="og:type" content="website">
@@ -570,18 +570,55 @@
     .stats-bar { grid-template-columns: repeat(3,1fr); gap: 8px; }
     .stat-num { font-size: 1.4rem; }
   }
+
+  .topic-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 14px; margin-bottom: 20px; }
+  .topic-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 22px 16px; text-align: center; cursor: pointer; transition: all 0.25s; }
+  .topic-card:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: 0 12px 30px rgba(255,107,53,0.2); }
+  .topic-icon { font-size: 2rem; margin-bottom: 10px; display: block; }
+  .topic-name { font-size: 0.95rem; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+  .topic-count { font-size: 0.72rem; color: var(--accent); font-family: Space Mono, monospace; }
+  .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 1000; padding: 20px; overflow-y: auto; backdrop-filter: blur(8px); }
+  .modal-overlay.open { display: flex; align-items: flex-start; justify-content: center; padding-top: 40px; }
+  .modal-box { background: var(--card); border: 1px solid var(--border); border-radius: 20px; max-width: 700px; width: 100%; padding: 36px; position: relative; animation: slideUp 0.3s ease; }
+  .modal-close { position: absolute; top: 16px; right: 16px; background: rgba(255,255,255,0.08); border: none; color: var(--text); width: 32px; height: 32px; border-radius: 50%; cursor: pointer; font-size: 0.9rem; }
+  .modal-close:hover { background: rgba(255,107,53,0.3); }
+  .modal-tag { font-size: 0.72rem; color: var(--accent); text-transform: uppercase; letter-spacing: 2px; font-family: Space Mono, monospace; margin-bottom: 10px; }
+  .modal-title { font-family: Tiro Devanagari Hindi, serif; font-size: 1.6rem; margin-bottom: 24px; color: #ffd700; }
+  .modal-content { color: rgba(255,255,255,0.85); line-height: 1.8; font-size: 1rem; }
+  .modal-content h3 { color: var(--accent2); font-size: 1.05rem; margin: 20px 0 8px; font-weight: 700; }
+  .modal-content p { margin-bottom: 12px; }
+  .modal-content ul { padding-left: 20px; margin-bottom: 12px; }
+  .modal-content li { margin-bottom: 6px; }
+  .modal-content .highlight { background: rgba(255,107,53,0.1); border-left: 3px solid var(--accent); padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 16px 0; }
+  .modal-content table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.9rem; }
+  .modal-content th { background: rgba(255,107,53,0.15); color: var(--accent); padding: 10px 12px; text-align: left; border: 1px solid var(--border); }
+  .modal-content td { padding: 8px 12px; border: 1px solid rgba(255,255,255,0.06); }
 </style>
 </head>
 <body>
 
 <header>
-  <div class="logo">GK<span>Quiz</span>.in</div>
+  <div class="logo">
+    <svg width="140" height="36" viewBox="0 0 140 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Brain icon -->
+      <circle cx="18" cy="18" r="14" fill="#ff6b35" opacity="0.15"/>
+      <circle cx="18" cy="18" r="14" stroke="#ff6b35" stroke-width="1.5"/>
+      <text x="18" y="23" text-anchor="middle" font-size="14" fill="#ff6b35">🧠</text>
+      <!-- GK text -->
+      <text x="38" y="14" font-family="Space Mono, monospace" font-size="13" font-weight="700" fill="#ff6b35">DAILYGK</text>
+      <text x="38" y="28" font-family="Space Mono, monospace" font-size="10" fill="#ffd700" letter-spacing="1">QUIZ</text>
+      <!-- .in badge -->
+      <rect x="72" y="18" width="24" height="13" rx="3" fill="#ff6b35" opacity="0.2"/>
+      <rect x="72" y="18" width="24" height="13" rx="3" stroke="#ff6b35" stroke-width="1"/>
+      <text x="84" y="28" text-anchor="middle" font-family="Space Mono, monospace" font-size="8" fill="#ff6b35">.in</text>
+    </svg>
+  </div>
   <div class="streak-badge" id="streakBadge">🔥 0 दिन</div>
 </header>
 
 <main>
   <div class="hero">
-    <div class="category-pill">DAILY QUIZ 2025</div>
+    <div class="category-pill">DAILY QUIZ 2026</div>
     <h1>रोज़ नया ज्ञान,<br>रोज़ नई चुनौती</h1>
     <p>Current Affairs · Science · History · Geography</p>
   </div>
@@ -642,12 +679,28 @@
     </div>
   </div>
 
-  <!-- Articles -->
+    <!-- Topics Section -->
   <div style="margin-top:50px">
+    <div class="section-title">विषय चुनें — पढ़ें और सीखें</div>
+    <div class="topic-grid" id="topicGrid"></div>
+  </div>
+
+  <!-- Articles -->
+  <div style="margin-top:40px">
     <div class="section-title">ज़रूरी पढ़ें</div>
     <div class="article-grid" id="articleGrid"></div>
   </div>
 </main>
+
+<!-- Topic Modal -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal()">
+  <div class="modal-box" onclick="event.stopPropagation()">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="modal-tag" id="modalTag"></div>
+    <h2 class="modal-title" id="modalTitle"></h2>
+    <div class="modal-content" id="modalContent"></div>
+  </div>
+</div>
 
 <footer>
   <div>© 2025 GKQuiz.in — रोज़ नए प्रश्न, रोज़ नया ज्ञान</div>
@@ -863,10 +916,252 @@ function loadArticles() {
   });
 }
 
+// Topics Data
+const topicsData = {
+  current: {
+    icon: '📰',
+    name: 'Current Affairs',
+    color: '#ff6b35',
+    articles: [
+      {
+        title: 'G20 दक्षिण अफ्रीका 2025',
+        content: `<p>G20 (Group of Twenty) दुनिया की 20 सबसे बड़ी अर्थव्यवस्थाओं का समूह है।</p>
+        <h3>2025 में G20 अध्यक्षता</h3>
+        <p><strong>दक्षिण अफ्रीका</strong> ने 2025 में G20 की अध्यक्षता संभाली है। थीम है — <em>"Solidarity, Equality, Sustainability"</em></p>
+        <h3>G20 के मुख्य सदस्य</h3>
+        <ul><li>भारत, चीन, अमेरिका, रूस, जर्मनी</li><li>ब्राज़ील, फ्रांस, इटली, जापान, कनाडा</li><li>ऑस्ट्रेलिया, दक्षिण कोरिया, इंडोनेशिया</li><li>सऊदी अरब, तुर्की, मेक्सिको, अर्जेंटीना</li><li>यूरोपीय संघ, दक्षिण अफ्रीका, UK</li></ul>
+        <div class="highlight">📌 भारत ने 2023 में G20 की अध्यक्षता की थी और नई दिल्ली में शिखर सम्मेलन आयोजित किया था।</div>
+        <h3>2025 के प्रमुख एजेंडे</h3>
+        <ul><li>जलवायु परिवर्तन और हरित ऊर्जा</li><li>वैश्विक ऋण संकट का समाधान</li><li>AI और डिजिटल अर्थव्यवस्था</li><li>अफ्रीका विकास निधि</li></ul>`
+      },
+      {
+        title: 'ISRO 2025: आदित्य-L1 और आगे',
+        content: `<h3>आदित्य-L1 मिशन</h3>
+        <p>आदित्य-L1 भारत का पहला <strong>सौर मिशन</strong> है। इसे 2 सितंबर 2023 को लॉन्च किया गया।</p>
+        <h3>L1 Point क्या है?</h3>
+        <p>L1 यानी Lagrange Point 1 — यह पृथ्वी और सूर्य के बीच एक विशेष बिंदु है जहां गुरुत्वाकर्षण संतुलित होता है। यहां से सूर्य का निरंतर अवलोकन संभव है।</p>
+        <div class="highlight">📌 आदित्य-L1 पृथ्वी से लगभग 15 लाख किमी दूर L1 बिंदु पर स्थापित है।</div>
+        <h3>मिशन के उद्देश्य</h3>
+        <ul><li>सौर कोरोना का अध्ययन</li><li>सौर हवाओं की जांच</li><li>सूर्य की UV किरणों का विश्लेषण</li><li>अंतरिक्ष मौसम की भविष्यवाणी</li></ul>
+        <h3>ISRO के आने वाले मिशन 2025</h3>
+        <ul><li><strong>Gaganyaan</strong> — भारत का पहला मानव अंतरिक्ष मिशन</li><li><strong>NISAR</strong> — NASA-ISRO का संयुक्त उपग्रह</li><li><strong>Chandrayaan-4</strong> — चंद्रमा से नमूने लाना</li></ul>`
+      },
+      {
+        title: 'भारत की नई आर्थिक नीतियां 2025',
+        content: `<h3>PM Surya Ghar Muft Bijli Yojana</h3>
+        <p>सरकार ने 1 करोड़ घरों में सोलर पैनल लगाने का लक्ष्य रखा है।</p>
+        <ul><li>300 यूनिट तक मुफ्त बिजली</li><li>सब्सिडी: ₹30,000 से ₹78,000</li><li>अतिरिक्त बिजली बेचने की सुविधा</li></ul>
+        <div class="highlight">📌 भारत 2025 में दुनिया की तीसरी सबसे बड़ी अर्थव्यवस्था बनने के करीब है।</div>
+        <h3>UPI की सफलता</h3>
+        <p>UPI (Unified Payment Interface) अब दुनिया का सबसे बड़ा real-time payment system बन चुका है।</p>
+        <table><tr><th>साल</th><th>UPI लेन-देन</th></tr><tr><td>2021</td><td>₹41 लाख करोड़</td></tr><tr><td>2022</td><td>₹126 लाख करोड़</td></tr><tr><td>2023</td><td>₹183 लाख करोड़</td></tr><tr><td>2024</td><td>₹200+ लाख करोड़</td></tr></table>`
+      }
+    ]
+  },
+  science: {
+    icon: '🔬',
+    name: 'Science & Tech',
+    color: '#00e676',
+    articles: [
+      {
+        title: 'DNA और जेनेटिक्स की दुनिया',
+        content: `<h3>DNA क्या है?</h3>
+        <p>DNA (Deoxyribonucleic Acid) एक अणु है जिसमें जीवित प्राणियों की आनुवंशिक जानकारी संग्रहित होती है।</p>
+        <h3>Double Helix संरचना</h3>
+        <p><strong>जेम्स वॉटसन और फ्रांसिस क्रिक</strong> ने 1953 में DNA की Double Helix संरचना खोजी। इसके लिए उन्हें 1962 में नोबेल पुरस्कार मिला।</p>
+        <div class="highlight">📌 मानव शरीर में लगभग 37 ट्रिलियन कोशिकाएं हैं, और हर कोशिका में पूरा DNA होता है।</div>
+        <h3>DNA के मुख्य तथ्य</h3>
+        <ul><li>4 Base: Adenine, Thymine, Guanine, Cytosine</li><li>A-T और G-C के साथ जोड़े बनते हैं</li><li>मानव genome में ~3 अरब base pairs हैं</li><li>DNA की कुल लंबाई ~2 मीटर प्रति कोशिका</li></ul>`
+      },
+      {
+        title: 'AI और Machine Learning — सरल भाषा में',
+        content: `<h3>Artificial Intelligence क्या है?</h3>
+        <p>AI वह तकनीक है जो कंप्यूटर को इंसानों जैसा सोचने और सीखने की क्षमता देती है।</p>
+        <h3>प्रमुख AI प्रकार</h3>
+        <table><tr><th>प्रकार</th><th>उदाहरण</th></tr><tr><td>Machine Learning</td><td>Email spam filter</td></tr><tr><td>Deep Learning</td><td>Image recognition</td></tr><tr><td>NLP</td><td>ChatGPT, Google Translate</td></tr><tr><td>Computer Vision</td><td>Face ID, CCTV</td></tr></table>
+        <h3>LLM क्या है?</h3>
+        <p><strong>Large Language Model (LLM)</strong> एक AI मॉडल है जो बड़ी मात्रा में text data पर trained होता है।</p>
+        <div class="highlight">📌 ChatGPT, Claude, Gemini सभी LLM पर आधारित हैं। भारत का अपना LLM — Hanooman भी विकसित हो रहा है।</div>
+        <h3>Chandrayaan-3 की सफलता</h3>
+        <p>23 अगस्त 2023 को भारत चंद्रमा के दक्षिणी ध्रुव पर उतरने वाला पहला देश बना।</p>
+        <ul><li>Lander: Vikram | Rover: Pragyan</li><li>14 दिन तक lunar surface पर काम किया</li><li>सल्फर, ऑक्सीजन और अन्य तत्व खोजे</li></ul>`
+      }
+    ]
+  },
+  history: {
+    icon: '🏛️',
+    name: 'History',
+    color: '#ffd700',
+    articles: [
+      {
+        title: 'भारतीय स्वतंत्रता संग्राम',
+        content: `<h3>1857 का विद्रोह</h3>
+        <p>1857 का विद्रोह भारत का पहला स्वतंत्रता संग्राम था। इसे "सिपाही विद्रोह" भी कहते हैं।</p>
+        <div class="highlight">📌 मंगल पांडे, झांसी की रानी लक्ष्मीबाई, बहादुर शाह ज़फर — ये इस विद्रोह के प्रमुख नायक थे।</div>
+        <h3>प्रमुख आंदोलन</h3>
+        <table><tr><th>आंदोलन</th><th>वर्ष</th><th>नेता</th></tr><tr><td>असहयोग आंदोलन</td><td>1920</td><td>महात्मा गांधी</td></tr><tr><td>सविनय अवज्ञा</td><td>1930</td><td>महात्मा गांधी</td></tr><tr><td>भारत छोड़ो</td><td>1942</td><td>गांधी जी</td></tr><tr><td>दांडी मार्च</td><td>1930</td><td>गांधी जी</td></tr></table>
+        <h3>महत्वपूर्ण तिथियां</h3>
+        <ul><li><strong>1885:</strong> कांग्रेस की स्थापना</li><li><strong>1919:</strong> जलियांवाला बाग हत्याकांड</li><li><strong>1947:</strong> भारत आज़ाद (15 अगस्त)</li><li><strong>1950:</strong> संविधान लागू (26 जनवरी)</li></ul>`
+      },
+      {
+        title: 'मुगल साम्राज्य — पूरी जानकारी',
+        content: `<h3>मुगल वंश</h3>
+        <p>मुगल साम्राज्य की स्थापना 1526 में <strong>बाबर</strong> ने पानीपत की प्रथम लड़ाई में इब्राहिम लोदी को हराकर की।</p>
+        <h3>प्रमुख मुगल शासक</h3>
+        <table><tr><th>शासक</th><th>कार्यकाल</th><th>प्रसिद्धि</th></tr><tr><td>बाबर</td><td>1526-1530</td><td>साम्राज्य संस्थापक</td></tr><tr><td>अकबर</td><td>1556-1605</td><td>दीन-ए-इलाही, राजपूत नीति</td></tr><tr><td>जहांगीर</td><td>1605-1627</td><td>न्याय की जंजीर</td></tr><tr><td>शाहजहां</td><td>1628-1658</td><td>ताजमहल निर्माण</td></tr><tr><td>औरंगज़ेब</td><td>1658-1707</td><td>अंतिम महान मुगल</td></tr></table>
+        <div class="highlight">📌 ताजमहल का निर्माण 1632-1653 के बीच हुआ। इसे बनाने में 22 वर्ष और 20,000 कारीगर लगे।</div>`
+      }
+    ]
+  },
+  geography: {
+    icon: '🌍',
+    name: 'Geography',
+    color: '#40c4ff',
+    articles: [
+      {
+        title: 'भारत की प्रमुख नदियां',
+        content: `<h3>भारत की नदी प्रणाली</h3>
+        <p>भारत में दो प्रमुख नदी तंत्र हैं — <strong>हिमालयी नदियां</strong> और <strong>प्रायद्वीपीय नदियां</strong>।</p>
+        <h3>प्रमुख नदियां और उनकी लंबाई</h3>
+        <table><tr><th>नदी</th><th>लंबाई (km)</th><th>उद्गम</th></tr><tr><td>गंगा</td><td>2525</td><td>गंगोत्री</td></tr><tr><td>गोदावरी</td><td>1465</td><td>नासिक</td></tr><tr><td>कृष्णा</td><td>1400</td><td>महाबलेश्वर</td></tr><tr><td>यमुना</td><td>1376</td><td>यमुनोत्री</td></tr><tr><td>नर्मदा</td><td>1312</td><td>अमरकंटक</td></tr></table>
+        <div class="highlight">📌 गंगा को "भारत की राष्ट्रीय नदी" का दर्जा प्राप्त है। यह 11 राज्यों से होकर बहती है।</div>
+        <h3>सुंदरबन डेल्टा</h3>
+        <p>गंगा-ब्रह्मपुत्र का डेल्टा विश्व का सबसे बड़ा डेल्टा है। यहां Royal Bengal Tiger पाया जाता है।</p>`
+      },
+      {
+        title: 'भारत के राज्य और केंद्र शासित प्रदेश',
+        content: `<h3>भारत का भूगोल</h3>
+        <p>भारत में वर्तमान में <strong>28 राज्य</strong> और <strong>8 केंद्र शासित प्रदेश</strong> हैं।</p>
+        <h3>क्षेत्रफल के अनुसार बड़े राज्य</h3>
+        <table><tr><th>राज्य</th><th>क्षेत्रफल (km²)</th></tr><tr><td>राजस्थान</td><td>3,42,239</td></tr><tr><td>मध्य प्रदेश</td><td>3,08,252</td></tr><tr><td>महाराष्ट्र</td><td>3,07,713</td></tr><tr><td>उत्तर प्रदेश</td><td>2,40,928</td></tr></table>
+        <div class="highlight">📌 राजस्थान भारत का सबसे बड़ा राज्य है। गोवा सबसे छोटा राज्य है।</div>
+        <h3>महत्वपूर्ण भौगोलिक तथ्य</h3>
+        <ul><li>सबसे ऊंची चोटी: K2 (8611m) — भारत में</li><li>सबसे लंबा समुद्र तट: गुजरात (1600 km)</li><li>सबसे ठंडा स्थान: द्रास (J&K)</li><li>सबसे गर्म स्थान: फलोदी (राजस्थान)</li></ul>`
+      }
+    ]
+  },
+  sports: {
+    icon: '🏆',
+    name: 'Sports',
+    color: '#ff4081',
+    articles: [
+      {
+        title: 'Paris Olympics 2024 — भारत का सफर',
+        content: `<h3>Paris Olympics 2024</h3>
+        <p>2024 के ग्रीष्मकालीन ओलंपिक खेल <strong>26 जुलाई से 11 अगस्त 2024</strong> तक पेरिस, फ्रांस में हुए।</p>
+        <h3>भारत के पदक विजेता</h3>
+        <table><tr><th>खिलाड़ी</th><th>खेल</th><th>पदक</th></tr><tr><td>नीरज चोपड़ा</td><td>Javelin Throw</td><td>🥈 रजत</td></tr><tr><td>मनु भाकर</td><td>10m Air Pistol</td><td>🥉 कांस्य</td></tr><tr><td>मनु भाकर+सरबजोत</td><td>10m Mixed</td><td>🥉 कांस्य</td></tr><tr><td>स्वप्निल कुसाले</td><td>50m Rifle</td><td>🥉 कांस्य</td></tr><tr><td>भारतीय हॉकी टीम</td><td>Field Hockey</td><td>🥉 कांस्य</td></tr><tr><td>अमन सेहरावत</td><td>Wrestling</td><td>🥉 कांस्य</td></tr></table>
+        <div class="highlight">📌 मनु भाकर एक ओलंपिक में 2 पदक जीतने वाली पहली भारतीय महिला बनीं।</div>`
+      },
+      {
+        title: 'Cricket 2024 — T20 World Cup विजय',
+        content: `<h3>ICC T20 World Cup 2024</h3>
+        <p>T20 World Cup 2024 <strong>जून 2024</strong> में West Indies और USA में आयोजित हुआ।</p>
+        <h3>फाइनल</h3>
+        <p><strong>भारत vs दक्षिण अफ्रीका</strong> — Barbados में</p>
+        <ul><li>भारत ने दक्षिण अफ्रीका को 7 रन से हराया</li><li>रोहित शर्मा — कप्तान</li><li>विराट कोहली — Player of the Match (76 runs)</li><li>हार्दिक पंड्या — अंतिम ओवर में 16 रन बचाए</li></ul>
+        <div class="highlight">📌 भारत 2007 के बाद दूसरी बार T20 World Cup Champion बना। 11 साल के ICC Trophy drought का अंत हुआ।</div>
+        <h3>IPL 2024</h3>
+        <p><strong>KKR</strong> ने IPL 2024 जीता — SRH को 8 विकेट से हराकर। श्रेयस अय्यर कप्तान थे।</p>`
+      }
+    ]
+  },
+  'current-affairs-extra': {
+    icon: '⚡',
+    name: 'Quick Facts',
+    color: '#aa00ff',
+    articles: [
+      {
+        title: '2025 के 50 ज़रूरी GK Facts',
+        content: `<h3>राजनीति और सरकार</h3>
+        <ul>
+          <li>भारत के राष्ट्रपति: <strong>द्रौपदी मुर्मू</strong></li>
+          <li>प्रधानमंत्री: <strong>नरेंद्र मोदी</strong> (तीसरा कार्यकाल)</li>
+          <li>CJI 2025: <strong>बी.आर. गवई</strong></li>
+          <li>RBI गवर्नर: <strong>संजय मल्होत्रा</strong></li>
+          <li>CAG: <strong>के. संजय मूर्ति</strong></li>
+        </ul>
+        <h3>अंतरराष्ट्रीय</h3>
+        <ul>
+          <li>UN महासचिव: <strong>एंतोनियो गुतेरेस</strong></li>
+          <li>USA राष्ट्रपति: <strong>डोनाल्ड ट्रंप</strong> (2025 से)</li>
+          <li>G20 अध्यक्षता 2025: <strong>दक्षिण अफ्रीका</strong></li>
+          <li>SCO अध्यक्षता 2024: <strong>पाकिस्तान</strong></li>
+        </ul>
+        <h3>पुरस्कार 2024</h3>
+        <ul>
+          <li>नोबेल शांति: <strong>Nihon Hidankyo</strong> (जापान)</li>
+          <li>नोबेल साहित्य: <strong>Han Kang</strong> (दक्षिण कोरिया)</li>
+          <li>भारत रत्न 2024: <strong>कर्पूरी ठाकुर, LK आडवाणी, PV नरसिम्हा राव, चौधरी चरण सिंह, MS स्वामीनाथन</strong></li>
+        </ul>
+        <div class="highlight">📌 2024 में 5 लोगों को भारत रत्न दिया गया — यह रिकॉर्ड संख्या है।</div>
+        <h3>खेल रिकॉर्ड</h3>
+        <ul>
+          <li>नीरज चोपड़ा का बेस्ट थ्रो: <strong>89.94m</strong></li>
+          <li>T20 WC 2024 — भारत चैंपियन</li>
+          <li>Paris Olympics में भारत: <strong>6 पदक</strong></li>
+        </ul>`
+      }
+    ]
+  }
+};
+
+function openTopic(topicKey, articleIdx) {
+  const topic = topicsData[topicKey];
+  const article = topic.articles[articleIdx];
+  document.getElementById('modalTag').textContent = topic.name;
+  document.getElementById('modalTitle').textContent = article.title;
+  document.getElementById('modalContent').innerHTML = article.content;
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// Keyboard ESC to close
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+function loadTopics() {
+  const grid = document.getElementById('topicGrid');
+  const keys = Object.keys(topicsData);
+  keys.forEach(key => {
+    const topic = topicsData[key];
+    const card = document.createElement('div');
+    card.className = 'topic-card';
+    card.innerHTML = `<span class="topic-icon">${topic.icon}</span><div class="topic-name">${topic.name}</div><div class="topic-count">${topic.articles.length} लेख</div>`;
+    card.onclick = () => openTopicList(key);
+    grid.appendChild(card);
+  });
+}
+
+function openTopicList(topicKey) {
+  const topic = topicsData[topicKey];
+  if (topic.articles.length === 1) {
+    openTopic(topicKey, 0);
+    return;
+  }
+  // Show article list
+  let listHTML = topic.articles.map((a, i) =>
+    `<div onclick="openTopic('${topicKey}', ${i})" style="padding:14px;border:1px solid rgba(255,255,255,0.1);border-radius:10px;cursor:pointer;margin-bottom:10px;transition:all 0.2s;" onmouseover="this.style.borderColor='#ff6b35'" onmouseout="this.style.borderColor='rgba(255,255,255,0.1)'">
+      <div style="font-weight:700;margin-bottom:4px;">${a.title}</div>
+      <div style="font-size:0.8rem;color:#888;">क्लिक करें पढ़ने के लिए →</div>
+    </div>`
+  ).join('');
+  document.getElementById('modalTag').textContent = topic.name;
+  document.getElementById('modalTitle').textContent = topic.icon + ' ' + topic.name;
+  document.getElementById('modalContent').innerHTML = listHTML;
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
 // Init
 loadStats();
 loadQuestion();
 loadArticles();
+loadTopics();
 </script>
 </body>
 </html>
