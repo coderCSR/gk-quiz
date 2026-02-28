@@ -8,6 +8,14 @@
 <meta property="og:title" content="Daily GK Quiz - रोज़ नया ज्ञान">
 <meta property="og:description" content="ताज़ा सामान्य ज्ञान प्रश्नोत्तरी - Current Affairs, Science, History">
 <meta property="og:type" content="website">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1ZQWRZ7X7R"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-1ZQWRZ7X7R');
+</script>
 <title>Daily GK Quiz | ताज़ा सामान्य ज्ञान</title>
 <link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Hindi:ital@0;1&family=Rajdhani:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
@@ -588,7 +596,7 @@
       <div class="stat-label">Best Score</div>
     </div>
     <div class="stat-box">
-      <div class="stat-num" id="totalQs">15</div>
+      <div class="stat-num" id="totalQs">30</div>
       <div class="stat-label">आज के प्रश्न</div>
     </div>
   </div>
@@ -672,6 +680,30 @@ const allQuestions = [
   // Sports
   {cat:'sports', q:'2024 पेरिस ओलंपिक में भारत ने कुल कितने पदक जीते?', opts:['4','5','6','7'], ans:2, exp:'भारत ने <strong>पेरिस ओलंपिक 2024</strong> में 6 पदक जीते: 0 स्वर्ण, 1 रजत, 5 कांस्य।'},
   {cat:'sports', q:'ICC Men\'s T20 World Cup 2024 किसने जीता?', opts:['ऑस्ट्रेलिया','भारत','इंग्लैंड','वेस्टइंडीज'], ans:1, exp:'<strong>भारत</strong> ने 2024 T20 World Cup जीता, फाइनल में दक्षिण अफ्रीका को हराकर। रोहित शर्मा की कप्तानी में यह ऐतिहासिक जीत थी।'},
+
+  // New Current Affairs
+  {cat:'current', q:'भारत के वर्तमान मुख्य न्यायाधीश (CJI) 2025 कौन हैं?', opts:['डी.वाई. चंद्रचूड़','संजीव खन्ना','बी.आर. गवई','सूर्यकांत'], ans:2, exp:'<strong>बी.आर. गवई</strong> 2025 में भारत के मुख्य न्यायाधीश बने। वे देश के 52वें CJI हैं।'},
+  {cat:'current', q:'UPI का पूर्ण रूप क्या है?', opts:['Unified Payment Interface','Universal Payment Index','United Pay Integration','Unified Process Interface'], ans:0, exp:'<strong>UPI - Unified Payment Interface</strong> को NPCI ने 2016 में लॉन्च किया। आज यह दुनिया का सबसे बड़ा real-time payment system है।'},
+  {cat:'current', q:'भारत ने 2024 में किस देश के साथ "SIMBEX" नौसेना अभ्यास किया?', opts:['सिंगापुर','मलेशिया','इंडोनेशिया','थाईलैंड'], ans:0, exp:'<strong>SIMBEX (Singapore-India Maritime Bilateral Exercise)</strong> भारत और सिंगापुर की नौसेना का वार्षिक अभ्यास है।'},
+  {cat:'current', q:'भारत का पहला "Water Metro" किस शहर में शुरू हुआ?', opts:['मुंबई','कोच्चि','गोवा','चेन्नई'], ans:1, exp:'<strong>कोच्चि</strong> में भारत का पहला Water Metro 2023 में शुरू हुआ। यह केरल की Vembanad Lake पर चलता है।'},
+  {cat:'current', q:'PM Surya Ghar Muft Bijli Yojana में कितनी free बिजली मिलती है?', opts:['100 units','200 units','300 units','500 units'], ans:2, exp:'<strong>PM Surya Ghar Muft Bijli Yojana</strong> में सोलर पैनल लगाने पर हर महीने <strong>300 units</strong> तक मुफ्त बिजली मिलती है।'},
+
+  // New Science
+  {cat:'science', q:'मानव शरीर में सबसे बड़ी ग्रंथि (Gland) कौन सी है?', opts:['थायरॉइड','पैंक्रियास','यकृत (Liver)','एड्रिनल'], ans:2, exp:'<strong>यकृत (Liver)</strong> मानव शरीर की सबसे बड़ी ग्रंथि है। यह पाचन, detoxification और प्रोटीन संश्लेषण में मदद करती है।'},
+  {cat:'science', q:'किस planet को "Red Planet" कहते हैं?', opts:['शुक्र','बृहस्पति','मंगल','शनि'], ans:2, exp:'<strong>मंगल (Mars)</strong> को Red Planet कहते हैं क्योंकि इसकी सतह पर iron oxide (जंग) की अधिकता है जो इसे लाल रंग देती है।'},
+  {cat:'science', q:'"Chandrayaan-3" चंद्रमा के किस हिस्से पर उतरा?', opts:['उत्तरी ध्रुव','दक्षिणी ध्रुव','भूमध्य रेखा','पूर्वी भाग'], ans:1, exp:'<strong>Chandrayaan-3</strong> ने 23 अगस्त 2023 को चंद्रमा के <strong>दक्षिणी ध्रुव</strong> पर सफलतापूर्वक लैंडिंग की। भारत यह उपलब्धि पाने वाला पहला देश बना।'},
+
+  // New History
+  {cat:'history', q:'भारत के पहले गृह मंत्री कौन थे?', opts:['जवाहरलाल नेहरू','सरदार वल्लभभाई पटेल','राजेंद्र प्रसाद','मौलाना आज़ाद'], ans:1, exp:'<strong>सरदार वल्लभभाई पटेल</strong> स्वतंत्र भारत के पहले गृह मंत्री थे। उन्होंने 562 रियासतों को भारत में मिलाया, इसलिए "लौह पुरुष" कहलाए।'},
+  {cat:'history', q:'जलियांवाला बाग हत्याकांड कब हुआ?', opts:['1917','1919','1921','1923'], ans:1, exp:'<strong>13 अप्रैल 1919</strong> को जनरल डायर के आदेश पर अमृतसर के जलियांवाला बाग में निर्दोष लोगों पर गोलीबारी की गई। इसमें 400 से अधिक लोग मारे गए।'},
+
+  // New Geography
+  {cat:'geography', q:'भारत का सबसे बड़ा राज्य (क्षेत्रफल में) कौन सा है?', opts:['मध्य प्रदेश','महाराष्ट्र','राजस्थान','उत्तर प्रदेश'], ans:2, exp:'<strong>राजस्थान</strong> 3,42,239 वर्ग किमी के साथ भारत का सबसे बड़ा राज्य है। इसे "थार मरुस्थल" भी कहते हैं।'},
+  {cat:'geography', q:'सुंदरबन डेल्टा किस नदी से बना है?', opts:['गंगा','ब्रह्मपुत्र','गंगा-ब्रह्मपुत्र','महानदी'], ans:2, exp:'<strong>सुंदरबन</strong> विश्व का सबसे बड़ा मैंग्रोव वन है जो <strong>गंगा और ब्रह्मपुत्र</strong> नदियों के डेल्टा पर भारत और बांग्लादेश में फैला है।'},
+
+  // New Sports
+  {cat:'sports', q:'Neeraj Chopra ने Paris Olympics 2024 में कौन सा पदक जीता?', opts:['स्वर्ण','रजत','कांस्य','कोई नहीं'], ans:1, exp:'<strong>नीरज चोपड़ा</strong> ने Paris Olympics 2024 में Javelin Throw में <strong>रजत पदक</strong> जीता। उन्होंने 89.45m थ्रो किया।'},
+  {cat:'sports', q:'IPL 2024 किसने जीता?', opts:['मुंबई इंडियंस','चेन्नई सुपर किंग्स','कोलकाता नाइट राइडर्स','रॉयल चैलेंजर्स बेंगलुरु'], ans:2, exp:'<strong>कोलकाता नाइट राइडर्स (KKR)</strong> ने IPL 2024 जीता। फाइनल में सनराइजर्स हैदराबाद को हराया। श्रेयस अय्यर कप्तान थे।'},
 ];
 
 const articles = [
