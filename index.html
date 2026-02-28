@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Daily GK Quiz - ताज़ा सामान्य ज्ञान प्रश्नोत्तरी। Current Affairs, Science, History, Geography के सवाल। रोज़ नए सवाल, रोज़ नया ज्ञान।">
+<meta name="keywords" content="GK Quiz, General Knowledge, Current Affairs 2025, सामान्य ज्ञान, Daily Quiz, India GK">
+<meta property="og:title" content="Daily GK Quiz - रोज़ नया ज्ञान">
+<meta property="og:description" content="ताज़ा सामान्य ज्ञान प्रश्नोत्तरी - Current Affairs, Science, History">
+<meta property="og:type" content="website">
+<title>Daily GK Quiz | ताज़ा सामान्य ज्ञान</title>
+<link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Hindi:ital@0;1&family=Rajdhani:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --surface: #12121a;
+    --card: #1a1a28;
+    --accent: #ff6b35;
+    --accent2: #ffd700;
+    --correct: #00e676;
+    --wrong: #ff1744;
+    --text: #f0f0f0;
+    --muted: #888;
+    --border: rgba(255,107,53,0.2);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Rajdhani', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Animated background grid */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: 
+      linear-gradient(rgba(255,107,53,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,107,53,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Glow blobs */
+  body::after {
+    content: '';
+    position: fixed;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(255,107,53,0.06) 0%, transparent 70%);
+    top: -100px;
+    right: -100px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(10,10,15,0.9);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo {
+    font-family: 'Space Mono', monospace;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: -1px;
+  }
+
+  .logo span { color: var(--accent2); }
+
+  .streak-badge {
+    background: rgba(255,215,0,0.1);
+    border: 1px solid rgba(255,215,0,0.3);
+    color: var(--accent2);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+
+  main {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px 80px;
+  }
+
+  /* Hero */
+  .hero {
+    text-align: center;
+    padding: 40px 0 50px;
+  }
+
+  .category-pill {
+    display: inline-block;
+    background: rgba(255,107,53,0.15);
+    border: 1px solid rgba(255,107,53,0.4);
+    color: var(--accent);
+    padding: 4px 16px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    font-family: 'Space Mono', monospace;
+  }
+
+  .hero h1 {
+    font-family: 'Tiro Devanagari Hindi', serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    line-height: 1.2;
+    margin-bottom: 12px;
+    background: linear-gradient(135deg, #fff 0%, rgba(255,215,0,0.8) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero p {
+    color: var(--muted);
+    font-size: 1.1rem;
+  }
+
+  /* Stats bar */
+  .stats-bar {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 40px;
+  }
+
+  .stat-box {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px;
+    text-align: center;
+    transition: border-color 0.3s;
+  }
+
+  .stat-box:hover { border-color: var(--accent); }
+
+  .stat-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 1.8rem;
+    color: var(--accent);
+    font-weight: 700;
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 4px;
+  }
+
+  /* Filter tabs */
+  .filter-tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 28px;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    scrollbar-width: none;
+  }
+
+  .filter-tabs::-webkit-scrollbar { display: none; }
+
+  .tab {
+    background: var(--card);
+    border: 1px solid var(--border);
+    color: var(--muted);
+    padding: 8px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    white-space: nowrap;
+    transition: all 0.2s;
+  }
+
+  .tab.active, .tab:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: white;
+  }
+
+  /* Quiz Card */
+  .quiz-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 36px;
+    margin-bottom: 24px;
+    position: relative;
+    overflow: hidden;
+    animation: slideUp 0.4s ease;
+    transition: border-color 0.3s;
+  }
+
+  .quiz-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+  }
+
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .q-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  .q-cat {
+    font-size: 0.75rem;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-family: 'Space Mono', monospace;
+  }
+
+  .q-num {
+    font-family: 'Space Mono', monospace;
+    color: var(--muted);
+    font-size: 0.8rem;
+  }
+
+  .q-progress {
+    width: 100%;
+    height: 3px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 2px;
+    margin-bottom: 24px;
+    overflow: hidden;
+  }
+
+  .q-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    border-radius: 2px;
+    transition: width 0.5s ease;
+  }
+
+  .question-text {
+    font-family: 'Tiro Devanagari Hindi', serif;
+    font-size: 1.3rem;
+    line-height: 1.6;
+    margin-bottom: 28px;
+    color: var(--text);
+  }
+
+  .options {
+    display: grid;
+    gap: 10px;
+  }
+
+  .option {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 14px 20px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 500;
+    color: var(--text);
+    text-align: left;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .option-letter {
+    width: 28px;
+    height: 28px;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem;
+    flex-shrink: 0;
+    transition: all 0.2s;
+  }
+
+  .option:hover:not(.disabled) {
+    background: rgba(255,107,53,0.1);
+    border-color: rgba(255,107,53,0.4);
+    transform: translateX(4px);
+  }
+
+  .option:hover:not(.disabled) .option-letter {
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+
+  .option.correct {
+    background: rgba(0,230,118,0.1);
+    border-color: var(--correct);
+    color: var(--correct);
+  }
+
+  .option.correct .option-letter {
+    background: var(--correct);
+    border-color: var(--correct);
+    color: #000;
+  }
+
+  .option.wrong {
+    background: rgba(255,23,68,0.1);
+    border-color: var(--wrong);
+    color: var(--wrong);
+  }
+
+  .option.wrong .option-letter {
+    background: var(--wrong);
+    border-color: var(--wrong);
+    color: white;
+  }
+
+  .option.disabled { cursor: default; }
+
+  /* Explanation */
+  .explanation {
+    margin-top: 20px;
+    padding: 16px 20px;
+    background: rgba(255,215,0,0.06);
+    border: 1px solid rgba(255,215,0,0.2);
+    border-radius: 12px;
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.8);
+    line-height: 1.6;
+    animation: fadeIn 0.3s ease;
+    display: none;
+  }
+
+  .explanation.show { display: block; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  .explanation strong { color: var(--accent2); }
+
+  /* Next button */
+  .btn-next {
+    margin-top: 20px;
+    background: linear-gradient(135deg, var(--accent), #ff4500);
+    color: white;
+    border: none;
+    padding: 14px 32px;
+    border-radius: 10px;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    letter-spacing: 1px;
+    transition: all 0.2s;
+    display: none;
+  }
+
+  .btn-next.show {
+    display: inline-block;
+    animation: fadeIn 0.3s ease;
+  }
+
+  .btn-next:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(255,107,53,0.4);
+  }
+
+  /* Score card */
+  .score-card {
+    text-align: center;
+    padding: 60px 36px;
+    display: none;
+  }
+
+  .score-card.show { display: block; }
+
+  .score-ring {
+    width: 140px;
+    height: 140px;
+    border: 4px solid var(--accent);
+    border-radius: 50%;
+    margin: 0 auto 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 40px rgba(255,107,53,0.3);
+  }
+
+  .score-big {
+    font-family: 'Space Mono', monospace;
+    font-size: 2.5rem;
+    color: var(--accent);
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .score-total {
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+
+  .score-msg {
+    font-family: 'Tiro Devanagari Hindi', serif;
+    font-size: 1.5rem;
+    margin-bottom: 8px;
+  }
+
+  .btn-retry {
+    margin-top: 24px;
+    background: transparent;
+    border: 2px solid var(--accent);
+    color: var(--accent);
+    padding: 12px 32px;
+    border-radius: 10px;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    letter-spacing: 1px;
+  }
+
+  .btn-retry:hover {
+    background: var(--accent);
+    color: white;
+  }
+
+  /* Article section */
+  .section-title {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 3px;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .article-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 16px;
+    margin-bottom: 50px;
+  }
+
+  .article-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+
+  .article-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+  }
+
+  .article-tag {
+    font-size: 0.7rem;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+    font-family: 'Space Mono', monospace;
+  }
+
+  .article-title {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  .article-date {
+    font-size: 0.75rem;
+    color: var(--muted);
+  }
+
+  footer {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 30px;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+
+  /* Share bar */
+  .share-bar {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 16px;
+  }
+
+  .share-btn {
+    padding: 8px 20px;
+    border-radius: 8px;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 600;
+    font-size: 0.85rem;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s;
+  }
+
+  .share-btn.whatsapp { background: #25d366; color: white; }
+  .share-btn.twitter { background: #1da1f2; color: white; }
+  .share-btn:hover { opacity: 0.85; transform: scale(1.05); }
+
+  @media (max-width: 600px) {
+    .quiz-card { padding: 24px 20px; }
+    .stats-bar { grid-template-columns: repeat(3,1fr); gap: 8px; }
+    .stat-num { font-size: 1.4rem; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">GK<span>Quiz</span>.in</div>
+  <div class="streak-badge" id="streakBadge">🔥 0 दिन</div>
+</header>
+
+<main>
+  <div class="hero">
+    <div class="category-pill">DAILY QUIZ 2025</div>
+    <h1>रोज़ नया ज्ञान,<br>रोज़ नई चुनौती</h1>
+    <p>Current Affairs · Science · History · Geography</p>
+  </div>
+
+  <div class="stats-bar">
+    <div class="stat-box">
+      <div class="stat-num" id="totalAttempts">0</div>
+      <div class="stat-label">कुल प्रयास</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num" id="bestScore">0%</div>
+      <div class="stat-label">Best Score</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num" id="totalQs">15</div>
+      <div class="stat-label">आज के प्रश्न</div>
+    </div>
+  </div>
+
+  <div class="filter-tabs">
+    <button class="tab active" onclick="filterQuiz('all', this)">सभी</button>
+    <button class="tab" onclick="filterQuiz('current', this)">Current Affairs</button>
+    <button class="tab" onclick="filterQuiz('science', this)">Science</button>
+    <button class="tab" onclick="filterQuiz('history', this)">History</button>
+    <button class="tab" onclick="filterQuiz('geography', this)">Geography</button>
+    <button class="tab" onclick="filterQuiz('sports', this)">Sports</button>
+  </div>
+
+  <!-- Quiz Container -->
+  <div id="quizContainer">
+    <div class="quiz-card" id="questionCard">
+      <div class="q-meta">
+        <span class="q-cat" id="qCategory">Current Affairs</span>
+        <span class="q-num" id="qNum">1 / 15</span>
+      </div>
+      <div class="q-progress">
+        <div class="q-progress-fill" id="progressFill" style="width:6.6%"></div>
+      </div>
+      <div class="question-text" id="questionText">लोड हो रहा है...</div>
+      <div class="options" id="optionsContainer"></div>
+      <div class="explanation" id="explanation"></div>
+      <button class="btn-next" id="btnNext" onclick="nextQuestion()">अगला प्रश्न →</button>
+    </div>
+
+    <div class="quiz-card score-card" id="scoreCard">
+      <div class="score-ring">
+        <div class="score-big" id="scoreBig">0</div>
+        <div class="score-total" id="scoreTotal">/ 0</div>
+      </div>
+      <div class="score-msg" id="scoreMsg">शाबाश!</div>
+      <p style="color:var(--muted); margin-bottom:16px" id="scoreSubMsg"></p>
+      <div class="share-bar">
+        <button class="share-btn whatsapp" onclick="shareScore('whatsapp')">📱 WhatsApp</button>
+        <button class="share-btn twitter" onclick="shareScore('twitter')">🐦 Twitter</button>
+      </div>
+      <br>
+      <button class="btn-retry" onclick="restartQuiz()">🔄 फिर से खेलें</button>
+    </div>
+  </div>
+
+  <!-- Articles -->
+  <div style="margin-top:50px">
+    <div class="section-title">ज़रूरी पढ़ें</div>
+    <div class="article-grid" id="articleGrid"></div>
+  </div>
+</main>
+
+<footer>
+  <div>© 2025 GKQuiz.in — रोज़ नए प्रश्न, रोज़ नया ज्ञान</div>
+  <div style="margin-top:8px; font-size:0.75rem">Made with ❤️ for India's Quiz Enthusiasts</div>
+</footer>
+
+<script>
+const allQuestions = [
+  // Current Affairs
+  {cat:'current', q:'2025 में भारत के किस शहर को "स्मार्ट सिटी ऑफ द ईयर" पुरस्कार मिला?', opts:['इंदौर','सूरत','पुणे','बेंगलुरु'], ans:0, exp:'<strong>इंदौर</strong> लगातार स्वच्छता और स्मार्ट इंफ्रास्ट्रक्चर में अग्रणी रहा है।'},
+  {cat:'current', q:'भारत ने 2025 में किस देश के साथ "YUVA" सैन्य अभ्यास किया?', opts:['रूस','फ्रांस','जापान','ऑस्ट्रेलिया'], ans:2, exp:'<strong>भारत-जापान</strong> YUVA सैन्य अभ्यास 2025 में आयोजित किया गया, जो दोनों देशों की सुरक्षा साझेदारी को मजबूत करता है।'},
+  {cat:'current', q:'ISRO का "आदित्य-L1" मिशन किसका अध्ययन कर रहा है?', opts:['चंद्रमा','सूर्य','मंगल','शुक्र'], ans:1, exp:'<strong>आदित्य-L1</strong> भारत का पहला सौर मिशन है जो सूर्य के कोरोना और सौर हवाओं का अध्ययन करता है।'},
+  {cat:'current', q:'2025 में G20 की अध्यक्षता किस देश के पास है?', opts:['भारत','ब्राज़ील','दक्षिण अफ्रीका','USA'], ans:2, exp:'<strong>दक्षिण अफ्रीका</strong> ने 2025 में G20 की अध्यक्षता ग्रहण की। भारत 2023 में G20 अध्यक्ष था।'},
+  {cat:'current', q:'भारत की पहली महिला Defense Intelligence Chief कौन बनीं?', opts:['निर्मला सीतारमण','माया शर्मा','रेणु खत्री','अर्चना रामासुंदरम'], ans:2, exp:'<strong>रेणु खत्री</strong> भारत की पहली महिला Defense Intelligence प्रमुख बनीं।'},
+  
+  // Science
+  {cat:'science', q:'DNA की Double Helix संरचना किसने खोजी?', opts:['लुई पाश्चर','वॉटसन और क्रिक','ग्रेगर मेंडल','चार्ल्स डार्विन'], ans:1, exp:'<strong>जेम्स वॉटसन और फ्रांसिस क्रिक</strong> ने 1953 में DNA की Double Helix संरचना की खोज की, जिसके लिए उन्हें 1962 में नोबेल पुरस्कार मिला।'},
+  {cat:'science', q:'प्रकाश की गति लगभग कितनी होती है?', opts:['3 लाख km/s','30 हजार km/s','3 करोड़ km/s','3 लाख km/h'], ans:0, exp:'<strong>प्रकाश की गति</strong> निर्वात में लगभग 3 × 10⁸ m/s यानी 3 लाख किलोमीटर प्रति सेकंड होती है।'},
+  {cat:'science', q:'AI के संदर्भ में "LLM" का पूर्ण रूप क्या है?', opts:['Large Logic Model','Large Language Model','Linear Learning Machine','Linguistic Logic Module'], ans:1, exp:'<strong>LLM</strong> का अर्थ है Large Language Model। ChatGPT, Claude, Gemini आदि सभी LLM हैं।'},
+  
+  // History
+  {cat:'history', q:'भारतीय राष्ट्रीय कांग्रेस की स्थापना कब हुई?', opts:['1857','1885','1905','1920'], ans:1, exp:'<strong>1885</strong> में ए.ओ. ह्यूम ने भारतीय राष्ट्रीय कांग्रेस की स्थापना की। पहला अधिवेशन मुंबई में हुआ था।'},
+  {cat:'history', q:'सम्राट अशोक ने बौद्ध धर्म अपनाया था कौनसे युद्ध के बाद?', opts:['पानीपत','कलिंग','हल्दीघाटी','तराईन'], ans:1, exp:'<strong>कलिंग युद्ध (261 BC)</strong> की भयंकर तबाही देखकर अशोक का मन बदल गया और उन्होंने बौद्ध धर्म अपना लिया।'},
+  {cat:'history', q:'ताजमहल का निर्माण किसने करवाया?', opts:['अकबर','जहांगीर','शाहजहां','औरंगज़ेब'], ans:2, exp:'<strong>शाहजहां</strong> ने अपनी पत्नी मुमताज महल की याद में 1632-1653 के बीच ताजमहल बनवाया।'},
+  
+  // Geography
+  {cat:'geography', q:'भारत की सबसे लंबी नदी कौन सी है?', opts:['गंगा','गोदावरी','यमुना','सिंधु'], ans:0, exp:'<strong>गंगा</strong> (2525 km) भारत की सबसे लंबी नदी है। हालांकि सिंधु पूरी लंबाई में लंबी है, लेकिन भारत में गंगा सबसे लंबी बहती है।'},
+  {cat:'geography', q:'विश्व का सबसे ऊंचा पठार कौन सा है?', opts:['तिब्बत का पठार','दक्कन पठार','ब्राज़ीलियन पठार','कोलोराडो पठार'], ans:0, exp:'<strong>तिब्बत का पठार</strong> "विश्व की छत" कहलाता है। इसकी औसत ऊंचाई 4500 मीटर है।'},
+  
+  // Sports
+  {cat:'sports', q:'2024 पेरिस ओलंपिक में भारत ने कुल कितने पदक जीते?', opts:['4','5','6','7'], ans:2, exp:'भारत ने <strong>पेरिस ओलंपिक 2024</strong> में 6 पदक जीते: 0 स्वर्ण, 1 रजत, 5 कांस्य।'},
+  {cat:'sports', q:'ICC Men\'s T20 World Cup 2024 किसने जीता?', opts:['ऑस्ट्रेलिया','भारत','इंग्लैंड','वेस्टइंडीज'], ans:1, exp:'<strong>भारत</strong> ने 2024 T20 World Cup जीता, फाइनल में दक्षिण अफ्रीका को हराकर। रोहित शर्मा की कप्तानी में यह ऐतिहासिक जीत थी।'},
+];
+
+const articles = [
+  {tag:'Current Affairs', title:'G20 दक्षिण अफ्रीका 2025: मुख्य एजेंडा क्या है?', date:'फरवरी 2025'},
+  {tag:'Science', title:'AI और LLM: भारत की तकनीकी क्रांति', date:'जनवरी 2025'},
+  {tag:'History', title:'भारत के 10 महत्वपूर्ण स्वतंत्रता सेनानी', date:'अगस्त 2024'},
+  {tag:'Sports', title:'पेरिस ओलंपिक 2024 में भारत का सफर', date:'अगस्त 2024'},
+  {tag:'Geography', title:'भारत की प्रमुख नदियां और उनका महत्व', date:'नवंबर 2024'},
+  {tag:'Current Affairs', title:'ISRO 2025: अगले मिशन की तैयारी', date:'मार्च 2025'},
+];
+
+let currentQ = 0;
+let score = 0;
+let filteredQuestions = [...allQuestions];
+let answered = false;
+
+function filterQuiz(cat, btn) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  filteredQuestions = cat === 'all' ? [...allQuestions] : allQuestions.filter(q => q.cat === cat);
+  document.getElementById('totalQs').textContent = filteredQuestions.length;
+  restartQuiz();
+}
+
+function loadQuestion() {
+  if (currentQ >= filteredQuestions.length) {
+    showScore();
+    return;
+  }
+  const q = filteredQuestions[currentQ];
+  answered = false;
+  document.getElementById('questionCard').style.display = 'block';
+  document.getElementById('scoreCard').classList.remove('show');
+  document.getElementById('qCategory').textContent = getCatLabel(q.cat);
+  document.getElementById('qNum').textContent = `${currentQ+1} / ${filteredQuestions.length}`;
+  document.getElementById('progressFill').style.width = `${((currentQ+1)/filteredQuestions.length)*100}%`;
+  document.getElementById('questionText').textContent = q.q;
+  document.getElementById('explanation').classList.remove('show');
+  document.getElementById('explanation').innerHTML = '';
+  document.getElementById('btnNext').classList.remove('show');
+
+  const opts = document.getElementById('optionsContainer');
+  opts.innerHTML = '';
+  const letters = ['A','B','C','D'];
+  q.opts.forEach((opt, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'option';
+    btn.innerHTML = `<span class="option-letter">${letters[i]}</span>${opt}`;
+    btn.onclick = () => selectAnswer(i);
+    opts.appendChild(btn);
+  });
+}
+
+function getCatLabel(cat) {
+  const map = {current:'Current Affairs',science:'Science',history:'History',geography:'Geography',sports:'Sports'};
+  return map[cat] || cat;
+}
+
+function selectAnswer(idx) {
+  if (answered) return;
+  answered = true;
+  const q = filteredQuestions[currentQ];
+  const opts = document.querySelectorAll('.option');
+  opts.forEach(o => o.classList.add('disabled'));
+  
+  if (idx === q.ans) {
+    opts[idx].classList.add('correct');
+    score++;
+  } else {
+    opts[idx].classList.add('wrong');
+    opts[q.ans].classList.add('correct');
+  }
+  
+  const expEl = document.getElementById('explanation');
+  expEl.innerHTML = `💡 <strong>व्याख्या:</strong> ${q.exp}`;
+  expEl.classList.add('show');
+  document.getElementById('btnNext').classList.add('show');
+}
+
+function nextQuestion() {
+  currentQ++;
+  if (currentQ >= filteredQuestions.length) {
+    showScore();
+  } else {
+    loadQuestion();
+  }
+}
+
+function showScore() {
+  document.getElementById('questionCard').style.display = 'none';
+  const sc = document.getElementById('scoreCard');
+  sc.classList.add('show');
+  const total = filteredQuestions.length;
+  const pct = Math.round((score/total)*100);
+  document.getElementById('scoreBig').textContent = score;
+  document.getElementById('scoreTotal').textContent = `/ ${total}`;
+
+  let msg, sub;
+  if (pct >= 80) { msg = '🏆 शानदार! आप GK Expert हैं!'; sub = 'आपका ज्ञान वाकई बहुत अच्छा है।'; }
+  else if (pct >= 60) { msg = '👍 अच्छा प्रदर्शन!'; sub = 'थोड़ी और मेहनत से आप टॉप पर होंगे।'; }
+  else { msg = '📚 और पढ़ाई करें!'; sub = 'हार मत मानिए, रोज़ अभ्यास करें।'; }
+  
+  document.getElementById('scoreMsg').textContent = msg;
+  document.getElementById('scoreSubMsg').textContent = sub;
+
+  // Update stats
+  let attempts = parseInt(localStorage.getItem('gk_attempts') || 0) + 1;
+  let best = parseInt(localStorage.getItem('gk_best') || 0);
+  if (pct > best) { best = pct; localStorage.setItem('gk_best', best); }
+  localStorage.setItem('gk_attempts', attempts);
+  document.getElementById('totalAttempts').textContent = attempts;
+  document.getElementById('bestScore').textContent = best + '%';
+}
+
+function restartQuiz() {
+  currentQ = 0;
+  score = 0;
+  document.getElementById('questionCard').style.display = 'block';
+  document.getElementById('scoreCard').classList.remove('show');
+  loadQuestion();
+}
+
+function shareScore(platform) {
+  const text = `मैंने GKQuiz.in पर ${score}/${filteredQuestions.length} सवाल सही किए! 🎯 क्या आप मुझे हरा सकते हैं? #GKQuiz #India`;
+  const url = window.location.href;
+  if (platform === 'whatsapp') window.open(`https://wa.me/?text=${encodeURIComponent(text + ' ' + url)}`);
+  else window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`);
+}
+
+function loadStats() {
+  const attempts = localStorage.getItem('gk_attempts') || 0;
+  const best = localStorage.getItem('gk_best') || 0;
+  const streak = localStorage.getItem('gk_streak') || 0;
+  document.getElementById('totalAttempts').textContent = attempts;
+  document.getElementById('bestScore').textContent = best + '%';
+  document.getElementById('streakBadge').textContent = `🔥 ${streak} दिन`;
+  
+  // Update streak
+  const today = new Date().toDateString();
+  const lastDay = localStorage.getItem('gk_last_day');
+  if (lastDay !== today) {
+    const yesterday = new Date(Date.now() - 86400000).toDateString();
+    const newStreak = lastDay === yesterday ? parseInt(streak)+1 : 1;
+    localStorage.setItem('gk_streak', newStreak);
+    localStorage.setItem('gk_last_day', today);
+    document.getElementById('streakBadge').textContent = `🔥 ${newStreak} दिन`;
+  }
+}
+
+function loadArticles() {
+  const grid = document.getElementById('articleGrid');
+  articles.forEach(a => {
+    const card = document.createElement('div');
+    card.className = 'article-card';
+    card.innerHTML = `<div class="article-tag">${a.tag}</div><div class="article-title">${a.title}</div><div class="article-date">${a.date}</div>`;
+    grid.appendChild(card);
+  });
+}
+
+// Init
+loadStats();
+loadQuestion();
+loadArticles();
+</script>
+</body>
+</html>
